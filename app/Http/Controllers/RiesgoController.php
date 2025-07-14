@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+// importando modelo Riesgo
+use App\Models\Riesgo;
 class RiesgoController extends Controller
 {
     /**
@@ -11,7 +12,9 @@ class RiesgoController extends Controller
      */
     public function index()
     {
-        //
+        //consulta datos de zonariesgo
+        $riesgos = Riesgo::all();
+        return view('riesgos.index', compact('riesgos'));
     }
 
     /**
@@ -19,7 +22,8 @@ class RiesgoController extends Controller
      */
     public function create()
     {
-        //
+        
+        return view('riesgos.create');
     }
 
     /**
