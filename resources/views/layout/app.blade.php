@@ -83,6 +83,12 @@
     </div>
     <!-- Carousel End -->
 
+    <!-- Cargar Google Maps API -->
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwgyPfap_2pZcOlUrNAusGyC-k-Sf-ryM&callback=initMap&libraries=places">
+    </script>
+
+
     <div class="container" style="margin-top: 120px;">
         @yield('contenido')
     </div>
