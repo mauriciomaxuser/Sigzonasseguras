@@ -32,14 +32,14 @@ class RiesgoController extends Controller
     public function store(Request $request)
     {
         //para enviar los datos del formulario
-        $datos= $request->validate([
+        $datos= $request = [
             'nombre' => $request->nombre,
             'descripcion' => $request->descripcion,
             'nivel_riesgo' => $request->nivel_riesgo,
             'documento' => $request->documento,
             'latitud' => $request->latitud,
             'longitud' => $request->longitud,
-        ]);
+        ];
         Riesgo::create($datos);
         
         return redirect()->route('riesgos.index');

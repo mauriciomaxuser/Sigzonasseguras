@@ -1,7 +1,8 @@
 @extends('layout.app')
 @section('contenido')
 
-<form action = "" method = "POST">
+<form action="{{ route('riesgos.store') }}" method="POST" enctype="multipart/form-data">
+
     @csrf
     <h1>Crear Nueva Zona de Riesgo</h1>
     <label for="nombre">Nombre de la Zona de Riesgo:</label>
