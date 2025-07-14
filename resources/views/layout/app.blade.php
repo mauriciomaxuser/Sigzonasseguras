@@ -54,7 +54,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <a href="{{ url('/home') }}" class="nav-item nav-link active">Home</a>
-                <a href="{{ url('/about') }}" class="nav-item nav-link">Zonas de riesgo</a>
+                <a href="{{route ('riesgos.index')}}" class="nav-item nav-link">Zonas de riesgo</a>
                 <a href="{{ url('/service') }}" class="nav-item nav-link">Zonas de punto de encuentro</a>
                 
             </div>

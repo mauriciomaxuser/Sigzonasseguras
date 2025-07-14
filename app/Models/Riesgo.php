@@ -8,7 +8,7 @@ class Riesgo extends Model
 {
     use HasFactory;
 
-    protected $table = 'riesgos';
+    protected $table = 'zonariesgo';
 
     protected $fillable = [
         'nombre',
