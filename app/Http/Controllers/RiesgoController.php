@@ -22,8 +22,8 @@ class RiesgoController extends Controller
      */
     public function create()
     {
-        
-        return view('riesgos.create');
+        // Retorna la vista para crear una nueva zona de riesgo
+        return view('riesgos.nuevo');  
     }
 
     /**
@@ -31,7 +31,19 @@ class RiesgoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //para enviar los datos del formulario
+        $datos= $request->validate([
+            'nombre' => $request->nombre,
+            'descripcion' => $request->descripcion,
+            'nivel_riesgo' => $request->nivel_riesgo,
+            'documento' => $request->documento,
+            'latitud' => $request->latitud,
+            'longitud' => $request->longitud,
+        ]);
+        Riesgo::create($datos);
+        
+        return redirect()->route('riesgos.index');
+    
     }
 
     /**
