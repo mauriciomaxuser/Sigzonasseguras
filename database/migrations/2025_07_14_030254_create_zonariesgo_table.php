@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('zonariesgo', function (Blueprint $table) {
             $table->id();
+            $table->string("nombre");
+            $table->string("descripcion");
+            $table->enum('nivel_riesgo', ['alto', 'medio', 'bajo']);
+            $table->string("documento");
+            $table->decimal('latitud', 10, 7)->nullable();
+            $table->decimal('longitud', 10, 7)->nullable();
             $table->timestamps();
         });
     }
