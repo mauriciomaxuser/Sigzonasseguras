@@ -34,7 +34,6 @@
     <input type="number" name="longitud" id="longitud"
     class="form-control" readonly >
     <br>
-
     
     <button type="submit">Guardar</button>
     <a href="{{ route('riesgos.index') }}">Cancelar</a>
