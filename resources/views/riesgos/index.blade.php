@@ -14,8 +14,14 @@
             <th>Descripción</th>
             <th>Nivel de riesgo</th>
             <th>Documento</th>
-            <th>latitud</th>
-            <th>longitud</th>
+            <th>Latitud 1</th>
+            <th>Longitud 1</th>
+            <th>Latitud 2</th>
+            <th>Longitud 2</th>
+            <th>Latitud 3</th>
+            <th>Longitud 3</th>
+            <th>Latitud 4</th>
+            <th>Longitud 4</th>
             <th>Acciones</th>
         </tr>
     </thead>
@@ -33,8 +39,14 @@
                     No disponible
                 @endif
             </td>
-            <td>{{ $riesgo->latitud }}</td>             
-            <td>{{ $riesgo->longitud }}</td>
+            <td>{{ $riesgo->latitud1 }}</td>             
+            <td>{{ $riesgo->longitud1 }}</td>
+            <td>{{ $riesgo->latitud2 }}</td>    
+            <td>{{ $riesgo->longitud2 }}</td>
+            <td>{{ $riesgo->latitud3 }}</td>
+            <td>{{ $riesgo->longitud3 }}</td>
+            <td>{{ $riesgo->latitud4 }}</td>
+            <td>{{ $riesgo->longitud4 }}</td>
             <td>
                 <a href="{{ route('riesgos.edit', $riesgo->id) }}" class="btn btn-primary">Editar</a>
                 <form action="{{ route('riesgos.destroy', $riesgo->id) }}" method="POST" style="display:inline;">

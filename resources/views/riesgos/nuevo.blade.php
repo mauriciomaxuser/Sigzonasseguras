@@ -26,14 +26,69 @@
     <input type="file" id="documento" name="documento" accept=".pdf" >
     <br>
 
-    <label for="latitud"><b>Latitud:</b></label><br>
-    <input type="number" name="latitud" id="latitud"
-    class="form-control" readonly >
-    <br>
-    <label for="longitud"><b>Longitud:</b></label><br>
-    <input type="number" name="longitud" id="longitud"
-    class="form-control" readonly >
-    <br>
+    <div class="row">
+                <div class="col-md-5">
+                    <label for=""><b>COORDENADA N° 1</b></label> <br>
+                    <label for=""><b>Latitud:</b></label><br>
+                    <input type="number" name="latitud1" id="latitud1"
+                    class="form-control" readonly placeholder="Seleccione ..."><br>
+                    <label for=""><b>Longitud:</b></label><br>
+                    <input type="number" name="longitud1" id="longitud1"
+                    class="form-control" readonly placeholder="Seleccione ...">
+                </div>
+                <div class="col-md-7">
+                    <div id="mapa1" style="height:180px; 
+                    width:100%; border:2px solid black;"></div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-5">
+                    <label for=""><b>COORDENADA N° 2</b></label> <br>
+                    <label for=""><b>Latitud:</b></label><br>
+                    <input type="number" name="latitud2" id="latitud2"
+                    class="form-control" readonly placeholder="Seleccione ..."><br>
+                    <label for=""><b>Longitud:</b></label><br>
+                    <input type="number" name="longitud2" id="longitud2"
+                    class="form-control" readonly placeholder="Seleccione ...">
+                </div>
+                <div class="col-md-7">
+                    <div id="mapa2" style="height:180px; 
+                    width:100%; border:2px solid black;"></div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-5">
+                    <label for=""><b>COORDENADA N° 3</b></label> <br>
+                    <label for=""><b>Latitud:</b></label><br>
+                    <input type="number" name="latitud3" id="latitud3"
+                    class="form-control" readonly placeholder="Seleccione ..."><br>
+                    <label for=""><b>Longitud:</b></label><br>
+                    <input type="number" name="longitud3" id="longitud3"
+                    class="form-control" readonly placeholder="Seleccione ...">
+                </div>
+                <div class="col-md-7">
+                    <div id="mapa3" style="height:180px; 
+                    width:100%; border:2px solid black;"></div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-5">
+                    <label for=""><b>COORDENADA N° 4</b></label> <br>
+                    <label for=""><b>Latitud:</b></label><br>
+                    <input type="number" name="latitud4" id="latitud4"
+                    class="form-control" readonly placeholder="Seleccione ..."><br>
+                    <label for=""><b>Longitud:</b></label><br>
+                    <input type="number" name="longitud4" id="longitud4"
+                    class="form-control" readonly placeholder="Seleccione ...">
+                </div>
+                <div class="col-md-7">
+                    <div id="mapa4" style="height:180px; 
+                    width:100%; border:2px solid black;"></div>
+                </div>
+            </div>
     
     <button type="submit">Guardar</button>
     <a href="{{ route('riesgos.index') }}">Cancelar</a>
