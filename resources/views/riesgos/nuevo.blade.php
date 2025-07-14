@@ -1,116 +1,85 @@
 @extends('layout.app')
 @section('contenido')
 
-<form action="{{ route('riesgos.store') }}" method="POST" enctype="multipart/form-data">
+<div class="container mt-4">
+    <div class="card shadow-lg">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">
+                <i class="fas fa-map-marked-alt me-2"></i> Crear Nueva Zona de Riesgo
+            </h3>
+        </div>
+        <div class="card-body">
+            <form action="{{ route('riesgos.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
 
-    @csrf
-    <h1>Crear Nueva Zona de Riesgo</h1>
-    <label for="nombre">Nombre de la Zona de Riesgo:</label>
-    <input type="text" id="nombre" name="nombre" >
-    <br>
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre de la Zona de Riesgo:</label>
+                    <input type="text" id="nombre" name="nombre" class="form-control" required>
+                </div>
 
-    <label for="descripcion">Descripción:</label>
-    <textarea id="descripcion" name="descripcion" ></textarea>
-    <br>
+                <div class="mb-3">
+                    <label for="descripcion" class="form-label">Descripción:</label>
+                    <textarea id="descripcion" name="descripcion" class="form-control" rows="3" required></textarea>
+                </div>
 
-    <label for="nivel_riesgo">Nivel de Riesgo:</label><br>
-    <select id="nivel_riesgo" name="nivel_riesgo" >
-        <option value="">Seleccione una opción</option>
-        <option value="alto">Alto</option>
-        <option value="medio">Medio</option>
-        <option value="bajo">Bajo</option>
-    </select>
-    <br>
-    
-    <label for="documento">Documento (PDF):</label><br>
-    <input type="file" id="documento" name="documento" accept=".pdf" >
-    <br>
+                <div class="mb-3">
+                    <label for="nivel_riesgo" class="form-label">Nivel de Riesgo:</label>
+                    <select id="nivel_riesgo" name="nivel_riesgo" class="form-select" required>
+                        <option value="">Seleccione una opción</option>
+                        <option value="alto">Alto</option>
+                        <option value="medio">Medio</option>
+                        <option value="bajo">Bajo</option>
+                    </select>
+                </div>
 
-    <div class="row">
-                <div class="col-md-5">
-                    <label for=""><b>COORDENADA N° 1</b></label> <br>
-                    <label for=""><b>Latitud:</b></label><br>
-                    <input type="number" name="latitud1" id="latitud1"
-                    class="form-control" readonly placeholder="Seleccione ..."><br>
-                    <label for=""><b>Longitud:</b></label><br>
-                    <input type="number" name="longitud1" id="longitud1"
-                    class="form-control" readonly placeholder="Seleccione ...">
+                <div class="mb-4">
+                    <label for="documento" class="form-label">Documento (PDF):</label>
+                    <input type="file" id="documento" name="documento" accept=".pdf" class="form-control">
                 </div>
-                <div class="col-md-7">
-                    <div id="mapa1" style="height:180px; 
-                    width:100%; border:2px solid black;"></div>
-                </div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col-md-5">
-                    <label for=""><b>COORDENADA N° 2</b></label> <br>
-                    <label for=""><b>Latitud:</b></label><br>
-                    <input type="number" name="latitud2" id="latitud2"
-                    class="form-control" readonly placeholder="Seleccione ..."><br>
-                    <label for=""><b>Longitud:</b></label><br>
-                    <input type="number" name="longitud2" id="longitud2"
-                    class="form-control" readonly placeholder="Seleccione ...">
-                </div>
-                <div class="col-md-7">
-                    <div id="mapa2" style="height:180px; 
-                    width:100%; border:2px solid black;"></div>
-                </div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col-md-5">
-                    <label for=""><b>COORDENADA N° 3</b></label> <br>
-                    <label for=""><b>Latitud:</b></label><br>
-                    <input type="number" name="latitud3" id="latitud3"
-                    class="form-control" readonly placeholder="Seleccione ..."><br>
-                    <label for=""><b>Longitud:</b></label><br>
-                    <input type="number" name="longitud3" id="longitud3"
-                    class="form-control" readonly placeholder="Seleccione ...">
-                </div>
-                <div class="col-md-7">
-                    <div id="mapa3" style="height:180px; 
-                    width:100%; border:2px solid black;"></div>
-                </div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col-md-5">
-                    <label for=""><b>COORDENADA N° 4</b></label> <br>
-                    <label for=""><b>Latitud:</b></label><br>
-                    <input type="number" name="latitud4" id="latitud4"
-                    class="form-control" readonly placeholder="Seleccione ..."><br>
-                    <label for=""><b>Longitud:</b></label><br>
-                    <input type="number" name="longitud4" id="longitud4"
-                    class="form-control" readonly placeholder="Seleccione ...">
-                </div>
-                <div class="col-md-7">
-                    <div id="mapa4" style="height:180px; 
-                    width:100%; border:2px solid black;"></div>
-                </div>
-            </div>
-    
-    
-    <center>
-        <button type="submit" class="btn btn-success">Guardar</button>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <button type="reset" class="btn btn-danger">Limpiar</button>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <button type="button" class="btn btn-primary" onclick="graficarzonariesgo();">Graficar circuito</button>
-        <a href="{{ route('riesgos.index') }}" class = "btn btn-secondary">Cancelar</a>
-    </center>    
-</form>
-<br>
-<div class="row">
-    <div class="col-md-12">
-        <div id="mapa-poligono" 
-         style="height:500px; width:100%;
-          border:2px solid blue;">
 
+                @for($i = 1; $i <= 4; $i++)
+                <div class="row mb-4">
+                    <div class="col-md-5">
+                        <h5><b>COORDENADA N° {{ $i }}</b></h5>
+                        <label for="latitud{{ $i }}" class="form-label">Latitud:</label>
+                        <input type="number" name="latitud{{ $i }}" id="latitud{{ $i }}" class="form-control" readonly placeholder="Seleccione...">
+                        
+                        <label for="longitud{{ $i }}" class="form-label mt-2">Longitud:</label>
+                        <input type="number" name="longitud{{ $i }}" id="longitud{{ $i }}" class="form-control" readonly placeholder="Seleccione...">
+                    </div>
+                    <div class="col-md-7">
+                        <div id="mapa{{ $i }}" style="height:180px; width:100%; border:2px solid #343a40; border-radius:6px;"></div>
+                    </div>
+                </div>
+                @endfor
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-success me-2">
+                        <i class="fas fa-save me-1"></i> Guardar
+                    </button>
+                    <button type="reset" class="btn btn-danger me-2">
+                        <i class="fas fa-eraser me-1"></i> Limpiar
+                    </button>
+                    <button type="button" class="btn btn-primary me-2" onclick="graficarzonariesgo();">
+                        <i class="fas fa-draw-polygon me-1"></i> Graficar Zona de Riesgo
+                    </button>
+                    <a href="{{ route('riesgos.index') }}" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left me-1"></i> Cancelar
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="card mt-4">
+        <div class="card-header bg-info text-white">
+            <i class="fas fa-map me-2"></i> Mapa de la Zona de Riesgo
+        </div>
+        <div class="card-body p-0">
+            <div id="mapa-poligono" style="height:500px; width:100%; border:2px solid  rgb(5, 141, 62);"></div>
         </div>
     </div>
 </div>
-
 <script type="text/javascript">
 
      var mapaPoligono;//Variable Global

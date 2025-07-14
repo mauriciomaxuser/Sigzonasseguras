@@ -2,7 +2,10 @@
 @section('contenido')
 
 <h1>LISTADO DE ZONAS DE RIESGO </h1>
-<a href="{{ route('riesgos.create') }}">Crear Nueva Zona de Riesgo</a>
+<a href="{{ route('riesgos.create') }}" class="btn btn-success">
+    <i class="fas fa-map-marker-alt me-2"></i> Nueva Zona de Riesgo
+</a>
+
 &nbsp;&nbsp;&nbsp;&nbsp;
 
 <table class="table table-striped table-bordered" style="width:80%; margin:auto;">

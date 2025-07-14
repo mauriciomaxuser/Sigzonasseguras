@@ -81,6 +81,8 @@ class RiesgoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+    
+        $riesgo = Riesgo::findOrFail($id);
+        $riesgo->delete();
     }
 }
