@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RiesgoController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 
@@ -19,3 +20,5 @@ Route::get('/home', function () {
     return view('home');
 })->middleware('auth')->name('home');
 
+// ------------------------------------------------------ Rutas para Zona de Riesgo -------------------------------------------------
+Route::resource('riesgos', RiesgoController::class);
