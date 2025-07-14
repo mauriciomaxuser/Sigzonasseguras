@@ -15,8 +15,14 @@ class Riesgo extends Model
         'descripcion',
         'nivel_riesgo',
         'documento',
-        'latitud',
-        'longitud'
+        'latitud1',
+        'longitud1',
+        'latitud2',
+        'longitud2',
+        'latitud3',
+        'longitud3',
+        'latitud4',
+        'longitud4'
     ];
 
     public $timestamps = true;
