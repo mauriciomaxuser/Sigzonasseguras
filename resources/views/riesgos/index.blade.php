@@ -10,13 +10,12 @@
 
 <table class="table table-striped table-bordered" style="width:80%; margin:auto;">
     <thead class="table-dark">
-
         <tr>
             <th>ID</th>
             <th>Nombre</th>
             <th>Descripción</th>
             <th>Nivel de riesgo</th>
-            <th>Documento</th>
+            {{-- <th>Documento</th> Eliminado --}}
             <th>Latitud 1</th>
             <th>Longitud 1</th>
             <th>Latitud 2</th>
@@ -35,13 +34,7 @@
             <td>{{ $riesgo->nombre }}</td>
             <td>{{ $riesgo->descripcion }}</td>
             <td>{{ $riesgo->nivel_riesgo }}</td>
-            <td>
-                @if($riesgo->documento)
-                    <a href="{{ asset('storage/' . $riesgo->documento) }}" target="_blank">Ver Documento</a>
-                @else
-                    No disponible
-                @endif
-            </td>
+            {{-- Documento eliminado --}}
             <td>{{ $riesgo->latitud1 }}</td>             
             <td>{{ $riesgo->longitud1 }}</td>
             <td>{{ $riesgo->latitud2 }}</td>    

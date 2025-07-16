@@ -36,7 +36,6 @@ class RiesgoController extends Controller
             'nombre' => $request->nombre,
             'descripcion' => $request->descripcion,
             'nivel_riesgo' => $request->nivel_riesgo,
-            'documento' => $request->documento,
             'latitud1' => $request->latitud1,
             'longitud1' => $request->longitud1,
             'latitud2' => $request->latitud2,

@@ -14,7 +14,6 @@ class Riesgo extends Model
         'nombre',
         'descripcion',
         'nivel_riesgo',
-        'documento',
         'latitud1',
         'longitud1',
         'latitud2',

@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string("nombre");
             $table->string("descripcion");
             $table->enum('nivel_riesgo', ['alto', 'medio', 'bajo']);
-            $table->string("documento");
             $table->decimal('latitud1', 10, 7)->nullable();
             $table->decimal('longitud1', 10, 7)->nullable();
             $table->decimal('latitud2', 10, 7)->nullable();
