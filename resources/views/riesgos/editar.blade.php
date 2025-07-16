@@ -1,6 +1,7 @@
 @extends('layout.app')
 
 @section('contenido')
+<h1>EDITAR ZONA DE RIESGO SELECCIONADA</h1>
 <div class="container mt-4">
     <div class="card shadow-lg">
         <div class="card-body">
