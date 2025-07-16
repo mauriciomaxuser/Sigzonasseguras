@@ -9,22 +9,22 @@
             </h3>
         </div>
         <div class="card-body">
-            <form action="{{ route('riesgos.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('riesgos.store') }}" id="frmnuevo" method="POST" enctype="multipart/form-data">
                 @csrf
 
                 <div class="mb-3">
                     <label for="nombre" class="form-label">Nombre de la Zona de Riesgo:</label>
-                    <input type="text" id="nombre" name="nombre" class="form-control" required>
+                    <input type="text" id="nombre" name="nombre" class="form-control" >
                 </div>
 
                 <div class="mb-3">
                     <label for="descripcion" class="form-label">Descripción:</label>
-                    <textarea id="descripcion" name="descripcion" class="form-control" rows="3" required></textarea>
+                    <textarea id="descripcion" name="descripcion" class="form-control" rows="3" ></textarea>
                 </div>
 
                 <div class="mb-3">
                     <label for="nivel_riesgo" class="form-label">Nivel de Riesgo:</label>
-                    <select id="nivel_riesgo" name="nivel_riesgo" class="form-select" required>
+                    <select id="nivel_riesgo" name="nivel_riesgo" class="form-select" >
                         <option value="">Seleccione una opción</option>
                         <option value="alto">Alto</option>
                         <option value="medio">Medio</option>
@@ -80,7 +80,45 @@
         </div>
     </div>
 </div>
-
+<script>
+  $("#frmnuevo").validate({
+    rules: {
+        nombre: {
+            required: true,
+            minlength: 3
+        },
+        descripcion: {
+            required: true,
+            minlength: 10
+        },
+        nivel_riesgo: {
+            required: true
+        },
+        documento: {
+            required: true,
+            extension: "pdf"
+        }
+    },
+    messages: {
+        nombre: {
+            required: "Por favor, ingrese el nombre de la zona de riesgo.",
+            minlength: "El nombre debe tener al menos 3 caracteres."
+        },
+        descripcion: {
+            required: "Por favor, ingrese una descripción.",
+            minlength: "La descripción debe tener al menos 10 caracteres."
+        },
+        nivel_riesgo: {
+            required: "Por favor, seleccione un nivel de riesgo."
+        },
+        documento: {
+            required: "Por favor, cargue un documento en formato PDF.",
+            extension: "El archivo debe ser un PDF."
+        }
+    }
+  });
+            
+</script>
 <script>
     $("#documento").fileinput({
             language: "es",
@@ -110,6 +148,8 @@
         });
     }
 </script>
+
+
 
 <script type="text/javascript">
 

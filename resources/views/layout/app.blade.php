@@ -11,9 +11,7 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <!-- importando JQUERY VALIDATION-->
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js "></script>
-    <!-- importacion validar extensiones de archivos -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/additional-methods.min.js"></script>
-
+    
     <!-- Favicon -->
     <link href="{{ asset('img/favicon.ico') }}" rel="icon">
 
@@ -136,9 +134,18 @@
         </div>
     </div>
 
+    
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
-
+    <style>
+        .error {
+        color: red;
+        font-weight: bold;
+        }
+        .form-control.error {
+        border: 1px solid red;
+        }
+    </style>
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
