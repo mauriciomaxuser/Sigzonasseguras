@@ -51,16 +51,39 @@
             <td>{{ $riesgo->latitud4 }}</td>
             <td>{{ $riesgo->longitud4 }}</td>
             <td>
-                <a href="{{ route('riesgos.edit', $riesgo->id) }}" class="btn btn-primary">Editar</a>
-                <form action="{{ route('riesgos.destroy', $riesgo->id) }}" method="POST" style="display:inline;">
+                <a href="{{ route('riesgos.edit', $riesgo->id) }}" class="btn btn-primary">
+                    <i class="fas fa-edit"></i> Editar
+                </a>
+                <form action="{{ route('riesgos.destroy', $riesgo->id) }}" method="POST" style="display:inline;" id="delete-form-{{ $riesgo->id }}">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                    <button type="button" class="btn btn-danger" onclick="eliminacion({{ $riesgo->id }})">
+                        <i class="fas fa-trash-alt"></i> Eliminar
+                    </button>
                 </form>
             </td>
         </tr>
         @endforeach
     </tbody>
 </table>
-    
+  
+
+<script>
+    function eliminacion(id) {
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: "¡No podrás revertir esta acción!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Sí, eliminar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById(`delete-form-${id}`).submit();
+            }
+        });
+    }
+</script>
 @endsection

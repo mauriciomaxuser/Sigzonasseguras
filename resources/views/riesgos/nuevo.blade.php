@@ -54,7 +54,7 @@
                 @endfor
 
                 <div class="text-center">
-                    <button type="submit" class="btn btn-success me-2">
+                    <button type="button" class="btn btn-success me-2" onclick="confirmarEnvio();">
                         <i class="fas fa-save me-1"></i> Guardar
                     </button>
                     <button type="reset" class="btn btn-danger me-2">
@@ -80,6 +80,37 @@
         </div>
     </div>
 </div>
+
+<script>
+    $("#documento").fileinput({
+            language: "es",
+            allowedFileExtensions: ["pdf"],
+            showCaption: false,
+            dropZoneEnabled: true,
+            showClose: false
+    });
+
+</script>
+
+<script>
+    function confirmarEnvio() {
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: "Se guardará la nueva zona de riesgo.",
+            icon: 'info',
+            showCancelButton: true,
+            confirmButtonColor: '#28a745',
+            cancelButtonColor: '#dc3545',
+            confirmButtonText: 'Sí, guardar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.querySelector('form').submit();
+            }
+        });
+    }
+</script>
+
 <script type="text/javascript">
 
      var mapaPoligono;//Variable Global
