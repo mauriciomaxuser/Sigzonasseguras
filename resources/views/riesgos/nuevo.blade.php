@@ -54,9 +54,11 @@
                 @endfor
 
                 <div class="text-center">
-                    <button type="button" class="btn btn-success me-2" onclick="confirmarEnvio();">
+                    <!-- Cambiar botón guardar: -->
+                    <button type="submit" class="btn btn-success me-2">
                         <i class="fas fa-save me-1"></i> Guardar
                     </button>
+
                     <button type="reset" class="btn btn-danger me-2">
                         <i class="fas fa-eraser me-1"></i> Limpiar
                     </button>
@@ -81,73 +83,126 @@
     </div>
 </div>
 <script>
+$(document).ready(function() {
+
   $("#frmnuevo").validate({
     rules: {
-        nombre: {
-            required: true,
-            minlength: 3
-        },
-        descripcion: {
-            required: true,
-            minlength: 10
-        },
-        nivel_riesgo: {
-            required: true
-        },
-        documento: {
-            required: true,
-            extension: "pdf"
-        }
+      nombre: {
+        required: true,
+        minlength: 3
+      },
+      descripcion: {
+        required: true,
+        minlength: 10
+      },
+      nivel_riesgo: {
+        required: true
+      },
+      documento: {
+        required: true,
+        extension: "pdf"
+      },
+      latitud1: {
+        required: true
+      },
+      longitud1: {
+        required: true
+      },
+      latitud2: {
+        required: true
+      },
+      longitud2: {
+        required: true
+      },
+      latitud3: {
+        required: true
+      },
+      longitud3: {
+        required: true
+      },
+      latitud4: {
+        required: true
+      },
+      longitud4: {
+        required: true
+      }
     },
     messages: {
-        nombre: {
-            required: "Por favor, ingrese el nombre de la zona de riesgo.",
-            minlength: "El nombre debe tener al menos 3 caracteres."
-        },
-        descripcion: {
-            required: "Por favor, ingrese una descripción.",
-            minlength: "La descripción debe tener al menos 10 caracteres."
-        },
-        nivel_riesgo: {
-            required: "Por favor, seleccione un nivel de riesgo."
-        },
-        documento: {
-            required: "Por favor, cargue un documento en formato PDF.",
-            extension: "El archivo debe ser un PDF."
+      nombre: {
+        required: "Por favor, ingrese el nombre de la zona de riesgo.",
+        minlength: "El nombre debe tener al menos 3 caracteres."
+      },
+      descripcion: {
+        required: "Por favor, ingrese una descripción.",
+        minlength: "La descripción debe tener al menos 10 caracteres."
+      },
+      nivel_riesgo: {
+        required: "Por favor, seleccione un nivel de riesgo."
+      },
+      documento: {
+        required: "Por favor, cargue un documento en formato PDF.",
+        extension: "El archivo debe ser un PDF."
+      },
+      latitud1: {
+        required: "Por favor, seleccione la latitud de la coordenada 1."
+      },
+      longitud1: {
+        required: "Por favor, seleccione la longitud de la coordenada 1."
+      },
+      latitud2: {
+        required: "Por favor, seleccione la latitud de la coordenada 2."
+      },
+      longitud2: {
+        required: "Por favor, seleccione la longitud de la coordenada 2."
+      },
+      latitud3: {
+        required: "Por favor, seleccione la latitud de la coordenada 3."
+      },
+      longitud3: {
+        required: "Por favor, seleccione la longitud de la coordenada 3."
+      },
+      latitud4: {
+        required: "Por favor, seleccione la latitud de la coordenada 4."
+      },
+      longitud4: {
+        required: "Por favor, seleccione la longitud de la coordenada 4."
+      }
+    },
+    errorClass: "text-danger",
+    errorElement: "small"
+  });
+
+  $("#documento").fileinput({
+    language: "es",
+    allowedFileExtensions: ["pdf"],
+    showCaption: false,
+    dropZoneEnabled: true,
+    showClose: false
+  });
+
+  $("#frmnuevo").on('submit', function(e) {
+    e.preventDefault();
+
+    if($(this).valid()){
+      Swal.fire({
+        title: '¿Estás seguro?',
+        text: "Se guardará la nueva zona de riesgo.",
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonColor: '#28a745',
+        cancelButtonColor: '#dc3545',
+        confirmButtonText: 'Sí, guardar',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.submit();
         }
+      });
     }
   });
-            
-</script>
-<script>
-    $("#documento").fileinput({
-            language: "es",
-            allowedFileExtensions: ["pdf"],
-            showCaption: false,
-            dropZoneEnabled: true,
-            showClose: false
-    });
-
+});
 </script>
 
-<script>
-    function confirmarEnvio() {
-        Swal.fire({
-            title: '¿Estás seguro?',
-            text: "Se guardará la nueva zona de riesgo.",
-            icon: 'info',
-            showCancelButton: true,
-            confirmButtonColor: '#28a745',
-            cancelButtonColor: '#dc3545',
-            confirmButtonText: 'Sí, guardar',
-            cancelButtonText: 'Cancelar'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                document.querySelector('form').submit();
-            }
-        });
-    }
-</script>
 
 
 
