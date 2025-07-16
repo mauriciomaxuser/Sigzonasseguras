@@ -100,9 +100,10 @@
             </div>
 
 
-                    <<button type="button" class="btn btn-success me-2" onclick="confirmarEnvio();">
-                        <i class="fas fa-save me-1"></i> Guardar
+                    <button type="submit" class="btn btn-success me-2">
+                      <i class="fas fa-save me-1"></i> Actualizar
                     </button>
+
                     <button type="reset" class="btn btn-danger me-2">
                         <i class="fas fa-eraser me-1"></i> Limpiar
                     </button>
@@ -139,10 +140,7 @@
         nivel_riesgo: {
             required: true
         },
-        documento: {
-            required: true,
-            extension: "pdf"
-        }
+        
     },
     messages: {
         nombre: {
@@ -157,40 +155,36 @@
             required: "Por favor, seleccione un nivel de riesgo."
         },
         documento: {
-            required: "Por favor, cargue un documento en formato PDF.",
             extension: "El archivo debe ser un PDF."
         }
+    },
+    submitHandler: function(form) {
+      Swal.fire({
+        title: '¿Estás seguro?',
+        text: "Se actualizará la zona de riesgo.",
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonColor: '#28a745',
+        cancelButtonColor: '#dc3545',
+        confirmButtonText: 'Sí, actualizar',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          form.submit();
+        }
+      });
     }
   });
-</script>
-<script>
-    function confirmarEnvio() {
-        Swal.fire({
-            title: '¿Estás seguro?',
-            text: "Se actualizará la zona de riesgo.",
-            icon: 'info',
-            showCancelButton: true,
-            confirmButtonColor: '#28a745',
-            cancelButtonColor: '#dc3545',
-            confirmButtonText: 'Sí, actualizar',
-            cancelButtonText: 'Cancelar'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                document.querySelector('form').submit();
-            }
-        });
-    }
-</script>
-<script>
-    $("#documento").fileinput({
-            language: "es",
-            allowedFileExtensions: ["pdf"],
-            showCaption: false,
-            dropZoneEnabled: true,
-            showClose: false
-    });
 
+  $("#documento").fileinput({
+    language: "es",
+    allowedFileExtensions: ["pdf"],
+    showCaption: false,
+    dropZoneEnabled: true,
+    showClose: false
+  });
 </script>
+
 
 <script type="text/javascript">
 
