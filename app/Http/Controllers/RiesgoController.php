@@ -65,7 +65,9 @@ class RiesgoController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        // Busca el riesgo por su ID
+        $riesgo = Riesgo::findOrFail($id);
+        return view('riesgos.editar', compact('riesgo'));
     }
 
     /**
@@ -73,7 +75,10 @@ class RiesgoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $riesgo = Riesgo::findOrFail($id);
+
+        $riesgo->update($request->all());
+        return redirect()->route('riesgos.index');
     }
 
     /**

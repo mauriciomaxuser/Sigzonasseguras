@@ -22,3 +22,5 @@ Route::get('/home', function () {
 
 // ------------------------------------------------------ Rutas para Zona de Riesgo -------------------------------------------------
 Route::resource('riesgos', RiesgoController::class);
+Route::get('/riesgos/{id}/edit', [RiesgoController::class, 'edit'])->name('riesgos.edit');
+Route::put('/riesgos/{id}', [RiesgoController::class, 'update'])->name('riesgos.update');
