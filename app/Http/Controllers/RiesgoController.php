@@ -84,5 +84,6 @@ class RiesgoController extends Controller
     
         $riesgo = Riesgo::findOrFail($id);
         $riesgo->delete();
+        return redirect()->route('riesgos.index');
     }
 }
