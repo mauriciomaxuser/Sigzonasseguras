@@ -4,7 +4,7 @@
 <div class="container mt-4">
     <div class="card shadow-lg">
         <div class="card-body">
-            <form action="{{ route('riesgos.update', $riesgo->id) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('riesgos.update', $riesgo->id) }}" id="frmeditar" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
@@ -98,12 +98,8 @@
                 </div>
             </div>
 
-            <button type="button" class="btn btn-success me-2" onclick="confirmarEnvio();">
-                <i class="fas fa-save me-1"></i> Actualizar
-            </button>
-                <a href="{{ route('riesgos.index') }}" class="btn btn-secondary">Cancelar</a>
-                <div class="text-center">
-                    <button type="button" class="btn btn-success me-2" onclick="confirmarEnvio();">
+
+                    <<button type="button" class="btn btn-success me-2" onclick="confirmarEnvio();">
                         <i class="fas fa-save me-1"></i> Guardar
                     </button>
                     <button type="reset" class="btn btn-danger me-2">
@@ -128,8 +124,44 @@
             <div id="mapa-poligono" style="height:500px; width:100%; border:2px solid  rgb(5, 141, 62);"></div>
         </div>
 </div>
-
-
+<script>
+  $("#frmeditar").validate({
+    rules: {
+        nombre: {
+            required: true,
+            minlength: 3
+        },
+        descripcion: {
+            required: true,
+            minlength: 10
+        },
+        nivel_riesgo: {
+            required: true
+        },
+        documento: {
+            required: true,
+            extension: "pdf"
+        }
+    },
+    messages: {
+        nombre: {
+            required: "Por favor, ingrese el nombre de la zona de riesgo.",
+            minlength: "El nombre debe tener al menos 3 caracteres."
+        },
+        descripcion: {
+            required: "Por favor, ingrese una descripción.",
+            minlength: "La descripción debe tener al menos 10 caracteres."
+        },
+        nivel_riesgo: {
+            required: "Por favor, seleccione un nivel de riesgo."
+        },
+        documento: {
+            required: "Por favor, cargue un documento en formato PDF.",
+            extension: "El archivo debe ser un PDF."
+        }
+    }
+  });
+</script>
 <script>
     function confirmarEnvio() {
         Swal.fire({
@@ -147,6 +179,16 @@
             }
         });
     }
+</script>
+<script>
+    $("#documento").fileinput({
+            language: "es",
+            allowedFileExtensions: ["pdf"],
+            showCaption: false,
+            dropZoneEnabled: true,
+            showClose: false
+    });
+
 </script>
 
 <script type="text/javascript">
