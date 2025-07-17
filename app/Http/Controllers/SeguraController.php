@@ -56,7 +56,11 @@ class SeguraController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        
+
+    $segura = Segura::findOrFail($id); 
+    return view('Seguras.editar', compact('segura')); 
+
     }
 
     /**
@@ -64,7 +68,11 @@ class SeguraController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        
+    
+        $segura = Segura::findOrFail($id); 
+        $segura->update($request->all()); 
+        return redirect()->route('seguras.index');
     }
 
     /**

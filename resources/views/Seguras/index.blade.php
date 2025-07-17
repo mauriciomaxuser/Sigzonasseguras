@@ -33,9 +33,9 @@
             <td>{{ $segura->longitud }}</td>             
             <td>{{ $segura->tipo_seguridad }}</td>
             <td>
-                <a href="{{ route('seguras.edit', $segura->id) }}" class="btn btn-primary btn-sm" title="Editar">
-                    <i class="fas fa-edit"></i>
-                </a>
+            <a href="{{ route('seguras.edit', $segura->id) }}" class="btn btn-primary">
+                <i class="fas fa-edit"></i> Editar
+            </a>
 
                 <form id="formEliminarSegura{{ $segura->id }}" action="{{ route('seguras.destroy', $segura->id) }}" method="POST" style="display: none;">
                     @csrf
