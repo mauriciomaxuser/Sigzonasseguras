@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Segura;
 class SeguraController extends Controller
 {
     /**
@@ -11,7 +12,10 @@ class SeguraController extends Controller
      */
     public function index()
     {
-        //
+
+        $Seguras = Segura::all();
+        return view('Seguras.index', compact('Seguras'));
+
     }
 
     /**
