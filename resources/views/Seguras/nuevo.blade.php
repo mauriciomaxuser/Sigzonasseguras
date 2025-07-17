@@ -15,18 +15,22 @@
                     <label for="nombre" class="form-label">Nombre de la Zona Segura</label>
                     <input type="text" class="form-control" id="nombre" name="nombre" >
                 </div>
-                <div class="mb-3">
-                    <label for="radio" class="form-label">Radio (en metros)</label>
-                    <input type="number" class="form-control" id="radio" name="radio" >
+                <label for="">Radio</label>
+                <input type="number" name="radio" id="radio" class="form-control" placeholder="Porfavor ingrese el radio">
+
+                <label for="">Ubicacion de la alarma</label><br>
+                <div class=row>
+                    <div class="col-md-6">
+                        <label for="">Latitud</label>
+                        <input type="text" id="latitud" name="latitud" class="form-control" readonly>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="">Longitud</label>
+                        <input type="text" id="longitud" name="longitud" class="form-control" readonly>
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <label for="latitud" class="form-label">Latitud</label>
-                    <input type="text" class="form-control" id="latitud" name="latitud" >
-                </div>
-                <div class="mb-3">
-                    <label for="longitud" class="form-label">Longitud</label>
-                    <input type="text" class="form-control" id="longitud" name="longitud" >
-                </div>
+
+
                 <div class="mb-3">
                     <label for="tipo_seguridad" class="form-label">Tipo de seguridad</label>
                     <input type="text" class="form-control" id="tipo_seguridad" name="tipo_seguridad" >

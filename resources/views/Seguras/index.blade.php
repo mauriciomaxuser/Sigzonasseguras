@@ -35,10 +35,10 @@
                 <a href=" " class="btn btn-primary">
                     <i class="fas fa-edit"></i> Editar
                 </a>
-                <form action=" " method="POST" style="display:inline;" id="delete-form-{{ $riesgo->id }}">
+                <form action=" " method="POST" style="display:inline;" id="delete-form-{{ $segura->id }}">
                     @csrf
                     @method('DELETE')
-                    <button type="button" class="btn btn-danger" onclick="eliminacion({{ $riesgo->id }})">
+                    <button type="button" class="btn btn-danger" onclick="eliminacion({{ $segura->id }})">
                         <i class="fas fa-trash-alt"></i> Eliminar
                     </button>
                 </form>

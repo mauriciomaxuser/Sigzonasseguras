@@ -31,7 +31,16 @@ class SeguraController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //para almacenar los datos de la zona segura
+        $datos = [
+            'nombre' => $request-> nombre,
+            'radio' => $request-> radio,
+            'latitud' => $request-> latitud,
+            'longitud' => $request-> longitud,
+            'tipo_seguridad' => $request-> tipo_seguridad
+        ];
+        Segura::create($datos); 
+        return redirect()->route('seguras.index');
     }
 
     /**
@@ -63,6 +72,9 @@ class SeguraController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+      
+        $segura = Segura::findOrFail($id);
+        $segura->delete(); 
+        return redirect()->route('seguras.index');
     }
 }
