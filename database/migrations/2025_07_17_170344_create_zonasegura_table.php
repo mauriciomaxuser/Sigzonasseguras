@@ -15,14 +15,14 @@ return new class extends Migration
             $table->id();
             $table->string("nombre");
             $table->double("radio");
-            $table->decimal("latitud");
-            $table->decimal("longitud");
+            $table->decimal("latitud", 10, 7);
+            $table->decimal("longitud", 10, 7);
             $table->string("tipo_seguridad");
             $table->timestamps();
         });
     }
 
-    /**S
+    /**
      * Reverse the migrations.
      */
     public function down(): void

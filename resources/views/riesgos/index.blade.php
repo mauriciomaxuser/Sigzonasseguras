@@ -6,6 +6,10 @@
 <a href="{{ route('riesgos.create') }}" class="btn btn-success mb-3">
     <i class="fas fa-map-marker-alt me-2"></i> Nueva Zona de Riesgo
 </a>
+<a href="{{ route('riesgos.mapa') }}" class="btn btn-info mb-3">
+    <i class="fas fa-map me-2"></i> Mapa Zonas de Riesgo
+</a>
+
 
 <table id="tablaRiesgos" class="table table-bordered table-striped table-hover">
     <thead>

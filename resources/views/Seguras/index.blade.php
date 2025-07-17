@@ -7,6 +7,9 @@
 <a href="{{ route('seguras.create') }}" class="btn btn-success mb-3">
     <i class="fas fa-map-marker-alt me-2"></i> Nueva Zona segura
 </a>
+<a href="{{ route('riesgos.create') }}" class="btn btn-success mb-3">
+    <i class="fas fa-map me-2"></i> Mapa Zonas Seguras
+</a>
 
 <table id="tablaSeguras" class="table table-striped table-bordered" style="width: 80%; margin: auto;">
     <thead>
@@ -30,9 +33,9 @@
             <td>{{ $segura->longitud }}</td>             
             <td>{{ $segura->tipo_seguridad }}</td>
             <td>
-                <a href="{{ route('seguras.edit', $segura->id) }}" class="btn btn-primary btn-sm" title="Editar">
-                    <i class="fas fa-edit"></i>
-                </a>
+            <a href="{{ route('seguras.edit', $segura->id) }}" class="btn btn-primary">
+                <i class="fas fa-edit"></i> Editar
+            </a>
 
                 <form id="formEliminarSegura{{ $segura->id }}" action="{{ route('seguras.destroy', $segura->id) }}" method="POST" style="display: none;">
                     @csrf
