@@ -5,7 +5,7 @@
     <div class="card shadow-lg">
         <div class="card-header bg-primary text-white">
             <h3 class="mb-0">
-                <i class="fas fa-map-marked-alt me-2"></i> Crear Nueva Zona segura
+                <i class="fas fa-map-marked-alt me-2"></i> Editar Zona Segura
             </h3>
         </div>
         <div class="card-body">
