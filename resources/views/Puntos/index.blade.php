@@ -60,19 +60,7 @@
 
         return false; // Evita el submit por defecto
     }
+
 </script>
-@section('scripts')
-@if(session('message'))
-<script>
-  Swal.fire({
-    icon: 'success',
-    title: '¡Éxito!',
-    text: '{{ session("message") }}',
-    timer: 3000,
-    showConfirmButton: false
-  });
-</script>
-@endif
-@endsection
 
 @endsection
