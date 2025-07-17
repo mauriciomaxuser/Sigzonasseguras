@@ -172,7 +172,17 @@
     <!-- Template Javascript -->
     <script src="{{ asset('js/main.js') }}"></script>
 @yield('scripts')  <!-- <-- Aquí -->
-
+@if(session('message'))
+<script>
+    Swal.fire({
+        icon: 'success',
+        title: '¡Éxito!',
+        text: '{{ session("message") }}',
+        timer: 3000,
+        showConfirmButton: false
+    });
+</script>
+@endif
 </body>
 
 </html>

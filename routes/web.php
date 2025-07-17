@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RiesgoController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\PuntoDeEncuentroController;
+
 
 Route::get('/', function () {
     return redirect()->route('login.form');
@@ -30,3 +32,16 @@ Route::resource('seguras', App\Http\Controllers\SeguraController::class);
 
 Route::get('/seguras/{id}/edit', [App\Http\Controllers\SeguraController::class, 'edit'])->name('seguras.edit');
 Route::put('/seguras/{id}', [App\Http\Controllers\SeguraController::class, 'update'])->name('seguras.update');
+
+// rutas para puntos de encuentro
+
+route::prefix('puntos')->middleware('auth')->group(function(){
+    route::get('/',[PuntoDeEncuentroController::class,'index'])->name('puntos.index');
+    route::get('/mapa',[PuntoDeEncuentroController::class,'mapa'])->name('puntos.mapa');
+    route::get('/create',[PuntoDeEncuentroController::class,'create'])->name('puntos.create');
+    route::post('/store',[PuntoDeEncuentroController::class,'store'])->name('puntos.store');
+    route::get('/edit/{id}',[PuntoDeEncuentroController::class,'edit'])->name('puntos.edit');
+    route::put('/update/{id}',[PuntoDeEncuentroController::class,'update'])->name('puntos.update');
+    Route::delete('/{id}', [PuntoDeEncuentroController::class, 'destroy'])->name('puntos.destroy');
+
+}); 
