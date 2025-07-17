@@ -16,6 +16,12 @@ class RiesgoController extends Controller
         $riesgos = Riesgo::all();
         return view('riesgos.index', compact('riesgos'));
     }
+    public function mapa()
+    {
+        $riesgos = Riesgo::all();
+        return view('riesgos.mapa', compact('riesgos'));
+    }
+
 
     /**
      * Show the form for creating a new resource.
