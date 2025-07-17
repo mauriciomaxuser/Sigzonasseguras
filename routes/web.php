@@ -24,3 +24,9 @@ Route::get('/home', function () {
 Route::resource('riesgos', RiesgoController::class);
 Route::get('/riesgos/{id}/edit', [RiesgoController::class, 'edit'])->name('riesgos.edit');
 Route::put('/riesgos/{id}', [RiesgoController::class, 'update'])->name('riesgos.update');
+// --- rutas para Zona Segura -------------------------------------------------
+
+Route::resource('seguras', App\Http\Controllers\SeguraController::class);
+
+Route::get('/seguras/{id}/edit', [App\Http\Controllers\SeguraController::class, 'edit'])->name('seguras.edit');
+Route::put('/seguras/{id}', [App\Http\Controllers\SeguraController::class, 'update'])->name('seguras.update');
