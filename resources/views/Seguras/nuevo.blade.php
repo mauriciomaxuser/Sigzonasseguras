@@ -17,6 +17,15 @@
                 </div>
                 <label for="">Radio</label>
                 <input type="number" name="radio" id="radio" class="form-control" placeholder="Porfavor ingrese el radio">
+                <div class="mb-3">
+                    <label for="tipo_seguridad" class="form-label">Tipo de seguridad:</label>
+                    <select id="tipo_seguridad" name="tipo_seguridad" class="form-select" >
+                        <option value="">Seleccione una opción</option>
+                        <option value="alto">Alto</option>
+                        <option value="medio">Medio</option>
+                        <option value="bajo">Bajo</option>
+                    </select>
+                </div>
 
                 <label for="">Ubicacion de la alarma</label><br>
                 <div class=row>
@@ -29,12 +38,12 @@
                         <input type="text" id="longitud" name="longitud" class="form-control" readonly>
                     </div>
                 </div>
+                <br>
+
+                
 
 
-                <div class="mb-3">
-                    <label for="tipo_seguridad" class="form-label">Tipo de seguridad</label>
-                    <input type="text" class="form-control" id="tipo_seguridad" name="tipo_seguridad" >
-                </div>
+                
 
                 <div id="mapa1" style="border:2px solid black; height:300px; width:100%;"></div>
 
