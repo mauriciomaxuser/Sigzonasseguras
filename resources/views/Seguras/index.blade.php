@@ -2,7 +2,7 @@
 @section('contenido')
 
 <h1>LISTADO DE ZONAS SEGURAS </h1>
-<a href="{{route ('Seguras.create')}}" class="btn btn-success">
+<a href="{{route ('seguras.create')}}" class="btn btn-success">
     <i class="fas fa-map-marker-alt me-2"></i> Nueva Zona segura
 </a>
 

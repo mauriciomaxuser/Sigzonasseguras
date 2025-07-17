@@ -23,7 +23,7 @@ class SeguraController extends Controller
      */
     public function create()
     {
-        //
+        return view('Seguras.nuevo');
     }
 
     /**
