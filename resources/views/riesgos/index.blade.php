@@ -1,21 +1,19 @@
 @extends('layout.app')
-@section('contenido')
 
-<h1>LISTADO DE ZONAS DE RIESGO </h1>
-<a href="{{ route('riesgos.create') }}" class="btn btn-success">
+@section('contenido')
+<h1>LISTADO DE ZONAS DE RIESGO</h1>
+
+<a href="{{ route('riesgos.create') }}" class="btn btn-success mb-3">
     <i class="fas fa-map-marker-alt me-2"></i> Nueva Zona de Riesgo
 </a>
 
-&nbsp;&nbsp;&nbsp;&nbsp;
-
-<table class="table table-striped table-bordered" style="width:80%; margin:auto;">
-    <thead class="table-dark">
+<table id="tablaRiesgos" class="table table-bordered table-striped table-hover">
+    <thead>
         <tr>
             <th>ID</th>
             <th>Nombre</th>
             <th>Descripción</th>
             <th>Nivel de riesgo</th>
-            {{-- <th>Documento</th> Eliminado --}}
             <th>Latitud 1</th>
             <th>Longitud 1</th>
             <th>Latitud 2</th>
@@ -34,49 +32,59 @@
             <td>{{ $riesgo->nombre }}</td>
             <td>{{ $riesgo->descripcion }}</td>
             <td>{{ $riesgo->nivel_riesgo }}</td>
-            {{-- Documento eliminado --}}
-            <td>{{ $riesgo->latitud1 }}</td>             
+            <td>{{ $riesgo->latitud1 }}</td>
             <td>{{ $riesgo->longitud1 }}</td>
-            <td>{{ $riesgo->latitud2 }}</td>    
+            <td>{{ $riesgo->latitud2 }}</td>
             <td>{{ $riesgo->longitud2 }}</td>
             <td>{{ $riesgo->latitud3 }}</td>
             <td>{{ $riesgo->longitud3 }}</td>
             <td>{{ $riesgo->latitud4 }}</td>
             <td>{{ $riesgo->longitud4 }}</td>
             <td>
-                <a href="{{ route('riesgos.edit', $riesgo->id) }}" class="btn btn-primary">
-                    <i class="fas fa-edit"></i> Editar
+                <a href="{{ route('riesgos.edit', $riesgo->id) }}" class="btn btn-primary btn-sm" title="Editar">
+                    <i class="fas fa-edit"></i>
                 </a>
-                <form action="{{ route('riesgos.destroy', $riesgo->id) }}" method="POST" style="display:inline;" id="delete-form-{{ $riesgo->id }}">
+                <button onclick="eliminarRiesgo({{ $riesgo->id }})" class="btn btn-danger btn-sm" title="Eliminar">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+                <form id="formEliminarRiesgo{{ $riesgo->id }}"
+                      action="{{ route('riesgos.destroy', $riesgo->id) }}"
+                      method="POST" style="display: none;">
                     @csrf
                     @method('DELETE')
-                    <button type="button" class="btn btn-danger" onclick="eliminacion({{ $riesgo->id }})">
-                        <i class="fas fa-trash-alt"></i> Eliminar
-                    </button>
                 </form>
             </td>
         </tr>
         @endforeach
     </tbody>
 </table>
-  
+@endsection
 
+@section('scripts')
 <script>
-    function eliminacion(id) {
+    function eliminarRiesgo(id) {
         Swal.fire({
-            title: '¿Estás seguro?',
-            text: "¡No podrás revertir esta acción!",
-            icon: 'warning',
+            title: "¿Estás seguro?",
+            text: "¡Esta acción no se puede deshacer!",
+            icon: "warning",
             showCancelButton: true,
-            confirmButtonColor: '#d33',
-            cancelButtonColor: '#3085d6',
-            confirmButtonText: 'Sí, eliminar',
-            cancelButtonText: 'Cancelar'
+            confirmButtonColor: "#d33",
+            cancelButtonColor: "#3085d6",
+            confirmButtonText: "Sí, eliminar",
+            cancelButtonText: "Cancelar"
         }).then((result) => {
             if (result.isConfirmed) {
-                document.getElementById(`delete-form-${id}`).submit();
+                document.getElementById('formEliminarRiesgo' + id).submit();
             }
         });
     }
+
+    $(document).ready(function() {
+    $('#tablaRiesgos').DataTable({
+        language: {
+            url: 'https://cdn.datatables.net/plug-ins/1.13.7/i18n/es-ES.json'
+        }
+    });
+});
 </script>
 @endsection
