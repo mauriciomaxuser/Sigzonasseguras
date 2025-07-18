@@ -1,48 +1,68 @@
 @extends('layout.app')
+
 @section('contenido')
 <div class="container mt-4">
     <div class="card shadow p-4">
-        <h1 class="mb-4 text-primary text-center">Ver Mapa de Puntos Seguros</h1>
-        <div id="mapa-clientes" style="border:1px solid #ced4da; height:500px; width:100%; border-radius: 8px;"></div>
+        <h1 class="mb-4 text-primary text-center">Mapa de Puntos de Encuentro</h1>
+
+        <div id="mapa-puntos" style="border:1px solid #ced4da; height:500px; width:100%; border-radius: 8px;"></div>
+
         <div class="d-flex justify-content-end mt-4">
-            <a href="{{ route('puntos.index') }}" class="btn btn-danger px-4">REGRESAR</a>
+            <a href="{{ route('puntos.index') }}" class="btn btn-danger px-4">
+                <i class="fas fa-arrow-left me-2"></i> REGRESAR
+            </a>
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+<!-- Google Maps JS API -->
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwgyPfap_2pZcOlUrNAusGyC-k-Sf-ryM&callback=initMap">
+</script>
 
 <script type="text/javascript">
     function initMap() {
-        alert("mapa ok");
-        var latitud_longitud = new google.maps.LatLng(-0.9374805, -78.6161327);
-        var mapa = new google.maps.Map(
-            document.getElementById('mapa-clientes'),
-            {
-                center: latitud_longitud,
-                zoom: 7,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            }
-        );
+        const centro = new google.maps.LatLng(-0.9374805, -78.6161327);
 
-        @foreach($puntos as $punto)
-            var coordenadaCliente = new google.maps.LatLng({{ $punto->latitud }}, {{ $punto->longitud }});
+        const mapa = new google.maps.Map(document.getElementById('mapa-puntos'), {
+            center: centro,
+            zoom: 12,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
 
-            var marcador = new google.maps.Marker({
-                position: coordenadaCliente,
+        const puntos = [
+            @foreach($puntos as $p)
+                {
+                    nombre: @json($p->nombre),
+                    capacidad: @json($p->capacidad),
+                    latitud: {{ $p->latitud }},
+                    longitud: {{ $p->longitud }}
+                },
+            @endforeach
+        ];
+
+        puntos.forEach(punto => {
+            const posicion = new google.maps.LatLng(punto.latitud, punto.longitud);
+
+            const marcador = new google.maps.Marker({
+                position: posicion,
                 map: mapa,
                 icon: {
                     url: 'https://maps.google.com/mapfiles/ms/icons/red-dot.png',
                     scaledSize: new google.maps.Size(32, 32)
-                },
-                draggable: false
+                }
             });
 
-            var info = new google.maps.InfoWindow({
-                content: `<strong>{{ $punto->nombre }}</strong><br>Capacidad: {{ $punto->capacidad }}`
+            const info = new google.maps.InfoWindow({
+                content: `<strong>${punto.nombre}</strong><br>Capacidad: ${punto.capacidad}`
             });
 
-            // Abrir automáticamente el InfoWindow
-            info.open(mapa, marcador);
-        @endforeach
+            marcador.addListener('click', () => {
+                info.open(mapa, marcador);
+            });
+        });
     }
 </script>
 @endsection
