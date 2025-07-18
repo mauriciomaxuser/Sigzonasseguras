@@ -3,6 +3,18 @@
 <head>
     <meta charset="utf-8">
     <title>Reporte de Zonas</title>
+
+    <p style="text-align:center; font-size:14px; margin-bottom:10px;">
+    📍 Escanea este código para ver el Mapa General en línea:
+</p>
+
+<div style="text-align:center; margin-bottom:30px;">
+    <img src="{{ $qrImage }}" width="150" height="150" alt="QR Mapa">
+</div>
+
+<p style="text-align:center; font-size:12px; color:#555;">
+    {{ $urlMapa }}
+</p>
     <style>
         body { font-family: DejaVu Sans, sans-serif; font-size: 12px; }
         h1 { text-align: center; color: #333; }

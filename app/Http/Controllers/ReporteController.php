@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Riesgo;
 use App\Models\Segura;
 use Barryvdh\DomPDF\Facade\Pdf;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class ReporteController extends Controller
 {
@@ -14,10 +15,25 @@ class ReporteController extends Controller
         
         $riesgos = Riesgo::all();
         $seguras = Segura::all();
+         
+        $urlMapa = url('/puntos/global');
 
         
-        $pdf = Pdf::loadView('reportes.zonas_pdf', compact('riesgos', 'seguras'))
-                  ->setPaper('a4', 'landscape'); // Formato horizontal
+        // ✅ Generar el QR como SVG
+    $qrSvg = QrCode::format('svg')->size(200)->generate($urlMapa);
+
+    // ✅ Convertir SVG a Base64 para que DomPDF lo interprete como imagen
+    $qrImage = 'data:image/svg+xml;base64,' . base64_encode($qrSvg);
+
+        $pdf = Pdf::loadView('reportes.zonas_pdf', [
+            'riesgos'  => $riesgos,
+            'seguras'  => $seguras,
+            'urlMapa'  => $urlMapa,
+            'qrImage'  => $qrImage
+        ])->setPaper('a4', 'landscape');
+
+        return $pdf->download('reporte_zonas.pdf');
+
 
         // Descargar el archivo
         return $pdf->download('reporte_zonas.pdf');
