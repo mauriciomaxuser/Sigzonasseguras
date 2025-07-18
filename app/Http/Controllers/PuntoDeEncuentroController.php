@@ -22,6 +22,8 @@ class PuntoDeEncuentroController extends Controller
         $puntos=PuntoDeEncuentro::all();
         return view('Puntos.mapa',compact('puntos'));
     }
+    
+
     /**
      * Show the form for creating a new resource.
      */

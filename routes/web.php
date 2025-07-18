@@ -6,6 +6,8 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PuntoDeEncuentroController;
 use App\Http\Controllers\SeguraController;
+use App\Http\Controllers\GlobalController;
+
 
 
 
@@ -41,10 +43,16 @@ Route::put('/seguras/{id}', [App\Http\Controllers\SeguraController::class, 'upda
 route::prefix('puntos')->middleware('auth')->group(function(){
     route::get('/',[PuntoDeEncuentroController::class,'index'])->name('puntos.index');
     route::get('/mapa',[PuntoDeEncuentroController::class,'mapa'])->name('puntos.mapa');
+    route::get('/home',[PuntoDeEncuentroController::class,'home'])->name('puntos.home');
+
     route::get('/create',[PuntoDeEncuentroController::class,'create'])->name('puntos.create');
+    route::get('/create',[PuntoDeEncuentroController::class,'create'])->name('puntos.create');
+
     route::post('/store',[PuntoDeEncuentroController::class,'store'])->name('puntos.store');
     route::get('/edit/{id}',[PuntoDeEncuentroController::class,'edit'])->name('puntos.edit');
     route::put('/update/{id}',[PuntoDeEncuentroController::class,'update'])->name('puntos.update');
     Route::delete('/{id}', [PuntoDeEncuentroController::class, 'destroy'])->name('puntos.destroy');
+
+    Route::get('/global', [GlobalController::class, 'index'])->name('global.index');
 
 }); 
