@@ -79,7 +79,7 @@
                 <a href="{{route ('riesgos.index')}}" class="nav-item nav-link">Zonas de riesgo</a>
                 <a href="{{route ('seguras.index')}}" class="nav-item nav-link">Zonas seguras</a>
                 <a href="{{ route('puntos.index') }}" class="nav-item nav-link">Zonas de puntos de encuentro</a>
-                <a href="{{ route('global.index') }}" class="nav-item nav-link">Mapa Global</a>
+                <a href="{{ route('global.index') }}" class="nav-item nav-link">Mapa General</a>
 
                 
             </div>
