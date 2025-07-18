@@ -56,9 +56,9 @@ function mostrarCirculos(filtro) {
 
             let color = '#3498db'; // azul por defecto
             switch (zona.tipo_seguridad) {
-                case 'alta': color = '#27ae60'; break;   // verde oscuro
-                case 'media': color = '#f39c12'; break;  // naranja
-                case 'baja': color = '#c0392b'; break;   // rojo
+                case 'alta': color = '#27ae60'; break;  
+                case 'media': color = '#f39c12'; break;  
+                case 'baja': color = '#c0392b'; break;   
             }
 
             const circulo = new google.maps.Circle({
@@ -106,7 +106,6 @@ function initMap() {
 
     mostrarCirculos('todos');
 
-    // Listener para el filtro
     document.getElementById('filtroTipo').addEventListener('change', function () {
         mostrarCirculos(this.value);
     });

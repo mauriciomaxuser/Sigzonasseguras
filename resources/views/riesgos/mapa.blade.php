@@ -58,22 +58,18 @@
             @endforeach
         ];
 
-        // Función para crear los polígonos y mostrarlos según filtro
         function mostrarPoligonos(filtro) {
-            // Limpiar polígonos previos
             poligonos.forEach(p => p.setMap(null));
             poligonos = [];
             bounds = new google.maps.LatLngBounds();
 
             zonas.forEach(zona => {
                 if (filtro === 'todos' || zona.nivel_riesgo === filtro) {
-                    // Extender bounds
                     zona.coordenadas.forEach(coord => {
                         bounds.extend(new google.maps.LatLng(coord.lat, coord.lng));
                     });
 
-                    // Color según nivel de riesgo
-                    let color = '#3498db'; // azul por defecto
+                    let color = '#3498db'; 
                     switch (zona.nivel_riesgo) {
                         case 'alto': color = '#e74c3c'; break;
                         case 'medio': color = '#f39c12'; break;
@@ -107,16 +103,13 @@
                 }
             });
 
-            // Ajustar el mapa para mostrar los polígonos visibles
             if (!bounds.isEmpty()) {
                 mapa.fitBounds(bounds);
             }
         }
 
-        // Mostrar todos los polígonos inicialmente
         mostrarPoligonos('todos');
 
-        // Evento para cambiar filtro
         document.getElementById('filtroNivel').addEventListener('change', function() {
             mostrarPoligonos(this.value);
         });
