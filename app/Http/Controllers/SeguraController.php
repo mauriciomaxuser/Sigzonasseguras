@@ -17,6 +17,11 @@ class SeguraController extends Controller
         return view('Seguras.index', compact('Seguras'));
 
     }
+    public function mapa()
+    {
+        $seguras = Segura::all();
+        return view('seguras.mapa', compact('seguras'));
+    }
 
     /**
      * Show the form for creating a new resource.

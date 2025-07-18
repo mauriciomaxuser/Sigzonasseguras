@@ -5,6 +5,8 @@ use App\Http\Controllers\RiesgoController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PuntoDeEncuentroController;
+use App\Http\Controllers\SeguraController;
+
 
 
 Route::get('/', function () {
@@ -26,10 +28,11 @@ Route::get('/home', function () {
 Route::resource('riesgos', RiesgoController::class);
 Route::get('/riesgos/{id}/edit', [RiesgoController::class, 'edit'])->name('riesgos.edit');
 Route::put('/riesgos/{id}', [RiesgoController::class, 'update'])->name('riesgos.update');
+Route::get('/mapa/riesgos', [RiesgoController::class, 'mapa'])->name('riesgos.mapa');
 // --- rutas para Zona Segura -------------------------------------------------
 Route::get('/mapa', [RiesgoController::class, 'mapa'])->name('riesgos.mapa');
 Route::resource('seguras', App\Http\Controllers\SeguraController::class);
-
+Route::get('/mapa', [SeguraController::class, 'mapa'])->name('seguras.mapa');  // Ruta mapa seguras
 Route::get('/seguras/{id}/edit', [App\Http\Controllers\SeguraController::class, 'edit'])->name('seguras.edit');
 Route::put('/seguras/{id}', [App\Http\Controllers\SeguraController::class, 'update'])->name('seguras.update');
 

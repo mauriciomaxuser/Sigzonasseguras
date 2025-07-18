@@ -7,7 +7,7 @@
 <a href="{{ route('seguras.create') }}" class="btn btn-success mb-3">
     <i class="fas fa-map-marker-alt me-2"></i> Nueva Zona segura
 </a>
-<a href="{{ route('riesgos.create') }}" class="btn btn-success mb-3">
+<a href="{{ route('seguras.mapa') }}" class="btn btn-success mb-3">
     <i class="fas fa-map me-2"></i> Mapa Zonas Seguras
 </a>
 
