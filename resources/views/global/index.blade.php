@@ -32,6 +32,9 @@
             <a href="{{ route('riesgos.index') }}" class="btn btn-danger px-4 me-2">
                 <i class="fas fa-arrow-left me-2"></i> REGRESAR
             </a>
+            <a href="" class="btn btn-danger px-4 me-2">
+                <i class= "fas fa-map-marker-alt me-2"></i> GENERAR REPORTES
+            </a>
             
         </div>
     </div>

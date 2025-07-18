@@ -56,3 +56,6 @@ route::prefix('puntos')->middleware('auth')->group(function(){
     Route::get('/global', [GlobalController::class, 'index'])->name('global.index');
 
 }); 
+// ----------------------- RUTA PARA REPORTES -----------------------
+
+Route::get('/reportes/zonas', [ReporteController::class, 'reporteZonas'])->name('reportes.zonas');
