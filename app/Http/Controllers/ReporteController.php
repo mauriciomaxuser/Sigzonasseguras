@@ -19,11 +19,13 @@ class ReporteController extends Controller
         $urlMapa = url('/puntos/global');
 
         
-        // ✅ Generar el QR como SVG
-    $qrSvg = QrCode::format('svg')->size(200)->generate($urlMapa);
+        // generar el QR como SVG
+        $qrSvg = QrCode::format('svg')->size(200)->generate($urlMapa);
 
-    // ✅ Convertir SVG a Base64 para que DomPDF lo interprete como imagen
-    $qrImage = 'data:image/svg+xml;base64,' . base64_encode($qrSvg);
+        $qrImage = 'data:image/svg+xml;base64,' . base64_encode($qrSvg);
+
+
+        
 
         $pdf = Pdf::loadView('reportes.zonas_pdf', [
             'riesgos'  => $riesgos,
