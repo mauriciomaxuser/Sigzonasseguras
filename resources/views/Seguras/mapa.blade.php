@@ -16,7 +16,7 @@
 <div id="mapa-seguras" style="height: 500px; width: 100%; border: 2px solid black;"></div>
 
 <a href="{{ route('seguras.index') }}" class="btn btn-secondary mt-3">
-    <i class="fas fa-arrow-left me-2"></i> Volver al Listado de Zonas Seguras
+    <i class="fas fa-arrow-left me-2"></i> Volv
 </a>
 @endsection
 
