@@ -6,7 +6,7 @@
 <div class="mb-4">
     <div class="btn btn-danger btn-lg" style="max-width: 18rem;">
         <div class="card-body">
-            <h7 class="card-title">Total de Zonas de Riesgos</h7>
+            <h7 class="card-title">Total de Zonas de Riesgo</h7>
             <p class="card-text fs-3">{{ count($riesgos) }}</p>
         </div>
     </div>
