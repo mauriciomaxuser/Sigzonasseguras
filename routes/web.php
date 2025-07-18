@@ -7,7 +7,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PuntoDeEncuentroController;
 use App\Http\Controllers\SeguraController;
 use App\Http\Controllers\GlobalController;
-
+use App\Http\Controllers\ReporteController;
 
 
 
