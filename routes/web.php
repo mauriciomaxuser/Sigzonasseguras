@@ -7,7 +7,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PuntoDeEncuentroController;
 use App\Http\Controllers\SeguraController;
 use App\Http\Controllers\GlobalController;
-
+use App\Http\Controllers\ReporteController;
 
 
 
@@ -54,3 +54,6 @@ route::prefix('puntos')->middleware('auth')->group(function(){
     Route::get('/global', [GlobalController::class, 'index'])->name('global.index');
 
 }); 
+// ----------------------- RUTA PARA REPORTES -----------------------
+
+Route::get('/reportes/zonas', [ReporteController::class, 'reporteZonas'])->name('reportes.zonas');
