@@ -9,7 +9,7 @@
 
         <div class="d-flex justify-content-end mt-4">
             <a href="{{ route('puntos.index') }}" class="btn btn-danger px-4">
-                <i class="fas fa-arrow-left me-2"></i>
+                <i class="fas fa-arrow-left me-2"></i> REGRESAR
             </a>
         </div>
     </div>
