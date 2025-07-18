@@ -26,19 +26,17 @@ Route::get('/home', function () {
     return view('home');
 })->middleware('auth')->name('home');
 
-// ------------------------------------------------------ Rutas para Zona de Riesgo -------------------------------------------------
 Route::resource('riesgos', RiesgoController::class);
 Route::get('/riesgos/{id}/edit', [RiesgoController::class, 'edit'])->name('riesgos.edit');
 Route::put('/riesgos/{id}', [RiesgoController::class, 'update'])->name('riesgos.update');
 Route::get('/mapa/riesgos', [RiesgoController::class, 'mapa'])->name('riesgos.mapa');
-// --- rutas para Zona Segura -------------------------------------------------
+
 Route::get('/mapa', [RiesgoController::class, 'mapa'])->name('riesgos.mapa');
 Route::resource('seguras', App\Http\Controllers\SeguraController::class);
 Route::get('/mapa', [SeguraController::class, 'mapa'])->name('seguras.mapa');  // Ruta mapa seguras
 Route::get('/seguras/{id}/edit', [App\Http\Controllers\SeguraController::class, 'edit'])->name('seguras.edit');
 Route::put('/seguras/{id}', [App\Http\Controllers\SeguraController::class, 'update'])->name('seguras.update');
 
-// rutas para puntos de encuentro
 
 route::prefix('puntos')->middleware('auth')->group(function(){
     route::get('/',[PuntoDeEncuentroController::class,'index'])->name('puntos.index');

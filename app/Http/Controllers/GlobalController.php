@@ -18,4 +18,5 @@ class GlobalController extends Controller
 
         return view('global.index', compact('puntos', 'riesgos', 'seguras'));
     }
+    
 }

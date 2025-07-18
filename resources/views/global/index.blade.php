@@ -51,7 +51,6 @@
 let mapa;
 let bounds;
 
-// Arrays para almacenar los objetos Google Maps para poder gestionarlos (mostrar/ocultar)
 let marcadores = [];
 let poligonos = [];
 let circulos = [];
@@ -208,7 +207,6 @@ function mostrarPoligonos(filtro) {
 }
 
 function mostrarCirculos(filtro) {
-    // Eliminar círculos previos
     circulos.forEach(c => c.setMap(null));
     circulos = [];
 
@@ -217,7 +215,7 @@ function mostrarCirculos(filtro) {
             const centro = new google.maps.LatLng(zona.latitud, zona.longitud);
             bounds.extend(centro);
 
-            let color = '#3498db'; // azul por defecto
+            let color = '#3498db';
             switch (zona.tipo_seguridad) {
                 case 'alta': color = '#27ae60'; break;  
                 case 'media': color = '#f39c12'; break;  
